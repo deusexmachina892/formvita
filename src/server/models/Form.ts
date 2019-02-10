@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
-import QuestionSchema from './Question';
+import * as Joi from 'joi';
+import { QuestionSchema, validateQuestion }  from './Question';
 
 const FormSchema: mongoose.Schema = new mongoose.Schema({
     title: {
@@ -18,4 +19,12 @@ const FormSchema: mongoose.Schema = new mongoose.Schema({
     }
 });
 
-export const Contact: mongoose.model = mongoose.model('Form', FormSchema);
+export const validateForm = (form) => {
+    const schema = {
+        title: Joi.string().min(3).max(255).required(),
+        description: Joi.string().min(3).max(2048).required(),
+    }
+
+    return Joi.validate(form, schema);
+}
+export const Form: mongoose.model = mongoose.model('Form', FormSchema);

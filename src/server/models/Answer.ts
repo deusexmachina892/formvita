@@ -14,4 +14,4 @@ const AnswerSchema: mongoose.Schema = new mongoose.Schema({
     }
 });
 
-export const Contact: mongoose.model = mongoose.model('Answer', AnswerSchema);
+export const Answer: mongoose.model = mongoose.model('Answer', AnswerSchema);

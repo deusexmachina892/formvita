@@ -1,3 +1,5 @@
 export default {
-    db:''
+    DB:'',
+    GOOGLE_CLIENT_ID: '',
+    GOOGLE_CLIENT_SECRET: ''
 }

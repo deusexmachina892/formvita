@@ -1,14 +1,16 @@
-import { Router } from 'express';
-import { Request, Response } from 'express';
+import { Router, Request, Response } from 'express';
+import { DashboardController } from '../controllers/dashboardController';
 
 export class DashboardRoutes{
     public router: Router;
+    public dashboardController: DashboardController;
+
     constructor(){
         this.router = Router();
         this.routes();
     }
     public routes(): void{
-      this.router.route('/forms')
+      this.router.route('/:userId/forms')
       // GET /forms 
         .get((req: Request, res: Response) => {
             res.status(200).send({

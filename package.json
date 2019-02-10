@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "ts-node src/server/server.ts",
+    "server:dev": "ts-node src/server/server.ts",
+    "server:prod":"node ./dist/server.js",
     "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "repository": {
@@ -21,9 +22,16 @@
   "homepage": "https://github.com/deusexmachina892/formwow#readme",
   "dependencies": {
     "@types/express": "^4.16.1",
+    "@types/passport": "^1.0.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "joi": "^14.3.1",
+    "joi-objectid": "^2.0.0",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.10",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
     "typescript": "^3.2.4"
   }
 }
