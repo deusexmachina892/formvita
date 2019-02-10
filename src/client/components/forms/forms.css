@@ -1,0 +1,76 @@
+.form-nav{
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #e9ecef;
+}
+.form-nav a{
+    color: #787878;
+    font-size: 1.25em;
+}
+.form-view-container{
+  width: 100%;
+}
+.form{
+    margin: -100px 25%;
+    background: #fff;
+    box-shadow: 2px 2px 2px 2px #ddd;
+    min-height: 300px;
+}
+.question{
+    margin: -30px 25%;
+    background: #fff;
+    box-shadow: 2px 2px 2px 2px #ddd;
+    min-height: 200px; 
+}
+.form-jumbotron{
+    min-height: 250px;
+}
+
+.form-small{
+    min-height: 250px;
+    max-width: 280px;
+    color: blue;
+    box-shadow: 2px 2px 2px 2px #ddd;
+    position: relative;
+    justify-content: center;
+    text-align: left;
+}
+
+.form-small:hover, .form-small:active{
+    cursor: pointer;
+    border: 1px solid rgb(147, 62, 197);
+}
+.form-small>.title-section{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #787878;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+}
+
+.form-small>.title-section>header{
+    color: #000;
+    font-size: 1.1em;
+}
+
+.form-small>.title-section>.data{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.form-small>.title-section>.data>span>img{
+    margin-right: 10px;
+    width: 15px;
+}
+
+.addquestion{
+    max-width: 10px;
+    height: 50px;
+    padding: 15px;
+    margin-left: 20%;
+    box-shadow:  2px 2px 2px 2px #ddd;
+}

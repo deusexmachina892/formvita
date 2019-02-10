@@ -2,6 +2,10 @@
 body{
     color: #8898aa;
 }
+a:hover, a:active{
+  color: #5b2c77;
+  text-decoration: none;
+}
 .nav-brand-color{
     color: rgb(147, 62, 197);
     font-size: 1.25em;
@@ -31,6 +35,13 @@ body{
 
 }
 
+.form-container{
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
 .add-containers>.add-container-elements:hover, .add-containers>.add-container-elements:active{
     cursor: pointer;
     border: 2px solid rgb(147, 62, 197);
@@ -49,4 +60,15 @@ body{
 .btn-google:hover, .btn-google:active{
     color: #fff;
     background-color: #962c2b;
+}
+
+.pagenotexist{
+    color: rgb(147, 62, 197);
+    font-size: 1.25em; 
+}
+
+.pagenotexistcontainer{
+     display: flex;
+   align-items: center; 
+   justify-content: center;
 }

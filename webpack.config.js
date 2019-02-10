@@ -64,7 +64,8 @@ module.exports = {
             "X-Custom-header":"custom"
         },
         open: true,
-        hot: true
+        hot: true,
+        historyApiFallback: true,
       },
       mode: 'development',
       plugins: [
