@@ -44,6 +44,11 @@ class App extends PureComponent{
                     <Route path="/" exact component={Landing} />
                     <Route path="/dashboard" exact component={Dashboard} />
                     <Route 
+                    path="/forms"
+                    exact 
+                    render={(props) => <FormView activeFormView={this.activeFormView}/>}
+                    />
+                    <Route 
                     path="/forms/:formId" 
                     exact 
                     render={(props) => <FormView activeFormView={this.activeFormView}/>}

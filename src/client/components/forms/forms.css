@@ -11,19 +11,18 @@
 }
 .form-view-container{
   width: 100%;
+ 
 }
 .form{
-    margin: -100px 25%;
-    background: #fff;
     box-shadow: 2px 2px 2px 2px #ddd;
+    margin: -100px 25% 100px 25%;
+    background: #fff;
     min-height: 300px;
 }
-.question{
-    margin: -30px 25%;
-    background: #fff;
-    box-shadow: 2px 2px 2px 2px #ddd;
-    min-height: 200px; 
+.form-header{
+  
 }
+
 .form-jumbotron{
     min-height: 250px;
 }
@@ -67,6 +66,149 @@
     width: 15px;
 }
 
+.form input{
+    width: 100%;
+    padding: 10px;
+    color: #787878;
+}
+input{
+    border: none;
+    border-bottom: 1px solid #ddd;
+
+}
+
+input:hover, input:active, input:focus{
+    cursor: pointer;
+    outline: none;
+    border-bottom: 1px solid #6772e5;
+    transition: all 1000ms ease-in-out;
+    color: #6772e5;
+}
+
+input:hover::placeholder {
+    color: #787878;
+}
+
+input:hover::placeholder, input:active::placeholder, input:focus::placeholder{
+    color: #6772e5;
+}
+
+#description{
+    font-size: 1em;
+}
+#title{
+    font-size: 2em;
+}
+
+.question{
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    background: #fff;  
+    min-height: 200px;
+    padding: 20px; 
+}
+
+.question:hover, .question:active, .question:focus{
+  outline: none;
+  border-left: 2px solid #6772e5;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 2px solid #ddd;
+}
+
+.question header{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+}
+
+.question header input{
+    width: 70%;
+}
+
+.question header select{
+    height: 40px;
+    border: none;
+    background-color: #f2efef;
+    padding: 10px;
+    color: #787878;
+}
+
+.question header select:focus, .question header select:active, .question header select:hover{
+  outline: none;
+  cursor: pointer;
+}
+
+.question header select option{
+    background-color: #f2efef;
+    border: none; 
+}
+
+.question header select:focus > option:checked { 
+    background: #000 !important;
+}
+
+select option:checked,
+select option:hover {
+    box-shadow: 0 0 10px 100px #000 inset;
+}
+.question main{
+
+}
+.question footer{
+visibility: hidden;
+}
+.question footer ul{
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+}
+.question footer ul li{
+    margin: 10px;
+    color: #787878;
+}
+
+.question footer ul li:hover, .question footer ul li:active{
+    cursor: pointer;
+    color: #565555;
+}
+
+.question .question-title{
+    border-bottom: none;
+}
+.question:hover .question-title, .question:active .question-title, .question:focus .question-title{
+    border-bottom: 1px solid #ddd;
+}
+.question:hover .question-title:focus, .question:hover .question-title:active, .question:hover .question-title:hover{
+    border-bottom: 1px solid #6772e5;
+    transform: all 1000ms ease-in;
+}
+
+.question main .multiple{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+.question .multiple input[type="radio"]{
+    width: 20px;
+    margin: 10px;
+}
+.question .multiple input[type="text"]{
+    width: 50%;
+    margin: 10px;
+}
+
+.question:active footer, .question:focus footer, .question:hover footer{
+    visibility: visible !important;
+}
+.question footer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+}
 .addquestion{
     max-width: 10px;
     height: 50px;
