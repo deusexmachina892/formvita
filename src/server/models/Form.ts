@@ -10,8 +10,13 @@ const FormSchema: mongoose.Schema = new mongoose.Schema({
         type: String
     },
     questions: [QuestionSchema],
+    assigned_to: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     created_by : {
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     created_date: {
         type: Date,

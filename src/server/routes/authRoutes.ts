@@ -5,13 +5,14 @@ import * as jwt from 'jsonwebtoken';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import config from '../config';
 import { User } from '../models/User';
+import { NextFunction } from 'connect';
 
 export class AuthRoutes{
     public router: Router;
     constructor(){
         this.router = Router();
         this.routes();
-        
+    
         passport.serializeUser((user, done)=>{
             done(null, user['_id']);
         });
@@ -31,15 +32,26 @@ export class AuthRoutes{
   )
       );
 
-      this.router.get( '/google/callback', 
-      passport.authenticate( 'google', { 
-          failureRedirect: '/api/v1/auth/google',
-          successRedirect: '/dashboard',
-          session: true
-        }
-        ));
+      this.router.get( '/google/callback', (req: Request, res: Response, next: NextFunction) => {
+        passport.authenticate( 'google', { 
+            failureRedirect: '/',
+            session: true
+          }, (err, user, info) => {
+            if(err) return next(err);
+
+            if(!user) return res.redirect('/');
+            console.log('user', user)
+
+            req.login(user, function(err) {
+                if (err) { return next(err); }
+                return res.redirect('/dashboard');
+              });
+          })(req, res, next)
+      });
 
       this.router.get('/current_user', (req: Request, res: Response) => {
+          
+         if(!req.user) return res.status(400).send({ user: {}, success: false});
           return res.status(200).send({
               user: req.user,
               success: true
@@ -56,7 +68,7 @@ export class AuthRoutes{
        return new GoogleStrategy({
                     clientID:     config.GOOGLE_CLIENT_ID,
                     clientSecret: config.GOOGLE_CLIENT_SECRET,
-                    callbackURL: "http://localhost:8080/api/v1/auth/google/callback",
+                    callbackURL: "/api/v1/auth/google/callback",
                     passReqToCallback   : true
                 },
                async function(request, accessToken, refreshToken, profile, done) {

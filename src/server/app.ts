@@ -10,6 +10,7 @@ import { Answer } from './models/Answer';
 import { AuthRoutes } from './routes/authRoutes';
 import { DashboardRoutes } from './routes/dashboardRoutes';
 import { PassportConfig } from './services/passport';
+import { error } from './middlewares/error';
 
 class App{
     public app: express.Application;
@@ -40,6 +41,7 @@ class App{
 
         this.app.use('/api/v1/auth', this.auth);
         this.app.use('/api/v1/dashboard', this.dashboard);
+        this.app.use(error);
     }
 
     private mongoSetup(): void{

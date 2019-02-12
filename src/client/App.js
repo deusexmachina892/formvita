@@ -1,5 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { fetchUser } from './actions';
 
 import Header from './components/Header';
 import { FormAdd } from './components/forms/FormAdd';
@@ -7,6 +10,7 @@ import { Landing } from './components/Landing';
 import { Dashboard } from './components/Dashboard';
 import { FormView } from './components/forms/FormView';
 import { Page404 } from './components/Page404';
+
 
 class App extends PureComponent{
     constructor(props){
@@ -17,6 +21,9 @@ class App extends PureComponent{
         }
         this.activeFormView = this.activeFormView.bind(this);
         this.togglePage404 = this.togglePage404.bind(this);
+    }
+    componentDidMount(){
+        this.props.fetchUser();
     }
     activeFormView(){
         this.setState({
@@ -64,4 +71,4 @@ class App extends PureComponent{
     }
 }
 
-export default App;
+export default connect(null, { fetchUser })(App);

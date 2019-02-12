@@ -25,7 +25,7 @@ a:hover, a:active{
     grid-gap: 10px;
 }
 
-.add-containers>.add-container-elements{
+.add-containers>a>.add-container-elements{
     height: 123px;
     width: 164px;
     background-color: #fff;

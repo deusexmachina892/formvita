@@ -10,7 +10,7 @@ const VENDOR_LIBS = [
 
 module.exports = {
     entry: {
-        bundle: APP_DIR + '/index.js'
+        bundle: ['babel-polyfill', APP_DIR + '/index.js']
     },
     output: {
         path: BUILD_DIR,
@@ -66,6 +66,11 @@ module.exports = {
         open: true,
         hot: true,
         historyApiFallback: true,
+        proxy: {
+            '/api':{
+                target: 'http://localhost:8080'
+            }
+        }
       },
       mode: 'development',
       plugins: [

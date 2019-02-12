@@ -7,17 +7,17 @@ import config from '../config';
 export class PassportConfig{
     public User: mongoose.model = mongoose.model('User');
     //Serialize user
-    
-        // passport.serializeUser((user, done)=>{
-        //     done(null, user._id);
-        // });
-    
-        // passport.deserializeUser((id, done)=>{
-        //     this.User.findById(id)
-        //         .then((user)=> done(null, user))
-        //         .catch((err)=> done(err, false));
-        // });
-    
+        constructor(){
+            passport.serializeUser((user, done)=>{
+                done(null, user['_id']);
+            });
+        
+            passport.deserializeUser((id, done)=>{
+                this.User.findById(id)
+                    .then((user)=> done(null, user))
+                    .catch((err)=> done(err, false));
+            });
+        }
         // passport.use(new GoogleStrategy({
         //     clientID:     config.GOOGLE_CLIENT_ID,
         //     clientSecret: config.GOOGLE_CLIENT_SECRET,
