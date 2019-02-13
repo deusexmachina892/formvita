@@ -18,6 +18,7 @@ class App{
     public dashboard: express.Router = new DashboardRoutes().router;
     public mongoUrl: string = config.DB;
     public User: mongoose.model = User;
+    public Form = mongoose.model = Form;
 
     constructor(){
         this.app = express();

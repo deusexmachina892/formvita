@@ -8,10 +8,6 @@ const UserSchema: mongoose.Schema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    ownedForms: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Form'
-    }],
     assignedForms: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Form'

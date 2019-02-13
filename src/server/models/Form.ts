@@ -30,6 +30,10 @@ export const validateForm = (form) => {
         description: Joi.string().min(3).max(2048).required(),
     }
 
-    return Joi.validate(form, schema);
+    const options = {
+        allowUnknown: true
+      }
+
+    return Joi.validate(form, schema, options);
 }
 export const Form: mongoose.model = mongoose.model('Form', FormSchema);

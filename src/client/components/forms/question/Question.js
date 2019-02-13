@@ -7,11 +7,11 @@ export class Question extends PureComponent {
     constructor(props){
         super(props);
         this.state = {
-            id: this.props.id,
+            _id: this.props.question._id,
             title: '',
-            isMultiple: false,
-            required: false,
-            choices: []
+            isMultiple: this.props.question.isMultiple || false,
+            required: this.props.question.required || false,
+            choices: this.props.question.choices || []
         }
 
         this.getDataFromChild = this.getDataFromChild.bind(this);
@@ -27,16 +27,16 @@ export class Question extends PureComponent {
        }
     }
 
-    handleChange(e, id){
+    handleChange(e, _id){
         switch(e.target.id){
-            case `question-${id}-title`:
+            case `question-${_id}-title`:
                 return this.setState({
                     title: e.target.value
                 });
-            case `question-${id}-select`:
+            case `question-${_id}-select`:
                 const isMultiple = e.target.value === 'multiple'? true: false;
                 this.setState({isMultiple});
-            case `question-${id}-required`:
+            case `question-${_id}-required`:
                 return this.setState({
                     required: !this.state.required
                 })
@@ -57,32 +57,32 @@ export class Question extends PureComponent {
                     <input 
                         type="text" 
                         className="question-title" 
-                        placeholder="Question" 
-                        id={`question-${this.props.id}-title`} 
-                        name={`question-${this.props.id}-title`}
+                        placeholder={this.props.question.title || "Question"}
+                        id={`question-${this.props.question._id}-title`} 
+                        name={`question-${this.props.question._id}-title`}
                         value={this.state.title} 
-                        onChange={(e)=>this.handleChange(e, this.props.id)}
+                        onChange={(e)=>this.handleChange(e, this.props.question._id)}
                         />
-                    <select id={`question-${this.props.id}-select`} onChange={(e) => this.handleChange(e, this.props.id)}>
+                    <select id={`question-${this.props.question._id}-select`} onChange={(e) => this.handleChange(e, this.props.question._id)}>
                         <option value="paragraph">Paragraph</option>
                         <option value="multiple">Multiple</option>
                     </select>
                 </header>
                 <main>
                     {isMultiple? 
-                       <Multiple sendData={this.getDataFromChild}/>
+                       <Multiple sendData={this.getDataFromChild} choices={this.props.question.choices}/>
                     : <Paragraph sendData={this.getDataFromChild}/>
                     }
                 </main>
                 <footer>
                     <ul>
-                        <li><i className="fa fa-trash fa-lg" aria-hidden="true"></i></li>
+                        <li><span onClick={() => this.props.remove(this.props.question._id)}><i className="fa fa-trash fa-lg" aria-hidden="true"></i></span></li>
                         <li>Required 
-                            <span  onClick={(e)=>this.handleChange(e, this.props.id)}>
+                            <span  onClick={(e)=>this.handleChange(e, this.props.question._id)}>
                                 {
                                     this.state.required?
-                                    <i className="fa fa-toggle-on fa-lg" aria-hidden="true" style={{color: 'green'}} id={`question-${this.props.id}-required`}></i>
-                                    : <i className="fa fa-toggle-off fa-lg" aria-hidden="true" id={`question-${this.props.id}-required`}></i>
+                                    <i className="fa fa-toggle-on fa-lg" aria-hidden="true" style={{color: 'green'}} id={`question-${this.props.question._id}-required`}></i>
+                                    : <i className="fa fa-toggle-off fa-lg" aria-hidden="true" id={`question-${this.props.question._id}-required`}></i>
                                     
                                 }
                              </span>

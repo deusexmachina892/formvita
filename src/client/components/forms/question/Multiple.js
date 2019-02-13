@@ -6,8 +6,8 @@ export class Multiple  extends PureComponent{
     constructor(props){
         super(props);
         this.state = {
-            choiceCounter: 0,
-            choices: [{
+            choiceCounter: this.props.choices.length|| 0,
+            choices: this.props.choices || [{
                 id: 0,
                 value: ''
             }]

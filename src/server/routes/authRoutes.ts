@@ -39,12 +39,11 @@ export class AuthRoutes{
           }, (err, user, info) => {
             if(err) return next(err);
 
-            if(!user) return res.redirect('/');
-            console.log('user', user)
+            if(!user) return res.status(302).redirect('/');
 
             req.login(user, function(err) {
                 if (err) { return next(err); }
-                return res.redirect('/dashboard');
+                return res.status(302).redirect('/dashboard')
               });
           })(req, res, next)
       });
@@ -71,8 +70,7 @@ export class AuthRoutes{
                     callbackURL: "/api/v1/auth/google/callback",
                     passReqToCallback   : true
                 },
-               async function(request, accessToken, refreshToken, profile, done) {
-                console.log('profile', profile)   
+               async function(request, accessToken, refreshToken, profile, done) {  
                 let user = await User.findOne({ email: profile.emails[0].value });
                    if(user) return done(null, user);
                    user = await  new User({email: profile.emails[0].value})
